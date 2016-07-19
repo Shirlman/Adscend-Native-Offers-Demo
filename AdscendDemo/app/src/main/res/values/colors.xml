@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="complete_gray">#666666</color>
+    <color name="main_header">#4caf50</color>
+    <color name="dark_green">#1b5e20</color>
+    <color name="all_apps_green">#2E7D32</color>
+    <color name="guide_text">#388e3c</color>
+    <color name="light_green">#c8e6c9</color>
+    <color name="main_bg_green">#E9F5E9</color>
+    <color name="dark_red">#bf360c</color>
+    <color name="settings_divider">#33773a</color>
+    <color name="dark_red_2">#BA350C</color>
+
+    <color name="colorPrimary">#1B5E20</color>
+    <color name="colorPrimaryDark">#1B5E20</color>
+
+    <color name="fw_main">#f55730</color>
+    <color name="fw_gray">#9a9a9a</color>
+
+    <color name="primary">#E43F3F</color>
+    <color name="iron">#CCCCCC</color>
+</resources>

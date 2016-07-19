@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent" android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/mo_offer_icon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/defualt_icon"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="1dp"
+        android:paddingBottom="1dp"
+        android:layout_centerVertical="true"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/credits_group"
+        android:gravity="center_vertical"
+        android:minHeight="80dp"
+        android:id="@+id/owi_middle_group"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/mo_offer_icon">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Game Title"
+            android:id="@+id/owi_title"
+            android:textColor="@color/dark_green"
+            android:textStyle="bold"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:id="@+id/owi_description"
+            android:layout_below="@+id/owi_title"
+            android:textColor="@android:color/black"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/credits_group"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/owi_offer_credits"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/dark_red"
+            android:textStyle="bold"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Credits"
+            android:id="@+id/textView32"
+            android:layout_below="@+id/owi_offer_credits"
+            android:textColor="@color/dark_red" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/imageView15"
+        android:background="@drawable/widget_divider"
+        android:layout_below="@+id/owi_middle_group" />
+</RelativeLayout>
