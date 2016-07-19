@@ -67,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void onEventMainThread(JobEvent.OnOfferWallGot event){
         if(event.offers != null && event.offers.size() > 0) {
-            final OfferAdapter offerAdapter = new OfferAdapter(this.getApplicationContext(), event.offers);
-
+            OfferAdapter offerAdapter = new OfferAdapter(this.getApplicationContext(), event.offers);
             mRecyclerView.setAdapter(offerAdapter);
+            Toast.makeText(MainActivity.this, "Total " + event.offers.size() + " offers", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(MainActivity.this, "No offers got", Toast.LENGTH_SHORT).show();
         }
