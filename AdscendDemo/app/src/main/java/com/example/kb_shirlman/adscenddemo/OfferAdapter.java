@@ -14,6 +14,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
+
 /**
  * Created by KB-Shirlman on 7/19/2016.
  */
@@ -38,7 +40,8 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder>{
             return;
         }
 
-        final OfferAPIResult.OffersBean offer = mOffers.get(position);
+        OfferAPIResult.OffersBean offer = mOffers.get(position);
+        final String clickUrl = offer.getClick_url();
 
         if(offer.getImage_url() != null && !offer.getImage_url().isEmpty()) {
             ImageLoader.getInstance().displayImage(offer.getCreative_url(), holder.offerIcon);
@@ -52,9 +55,11 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder>{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(offer.getClick_url()));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(clickUrl));
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 v.getContext().startActivity(intent);
+
+                EventBus.getDefault().post(new JobEvent.OnOfferClicked(clickUrl));
             }
         });
     }

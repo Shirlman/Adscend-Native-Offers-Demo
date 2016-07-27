@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.birbit.android.jobqueue.JobManager;
@@ -25,15 +27,24 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private View mGetMobileApps;
     private View mGetAllApps;
+    private EditText mOfferWallUrl;
+    private EditText mOfferClickUrl;
+
+    public static String userAgent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        WebView webView = new WebView(this);
+        userAgent = webView.getSettings().getUserAgentString();
+
         mRecyclerView = (RecyclerView) findViewById(R.id.offer_wall);
         mGetMobileApps = findViewById(R.id.get_mobile_apps);
         mGetAllApps = findViewById(R.id.get_all_apps);
+        mOfferWallUrl = (EditText) findViewById(R.id.offer_wall_url);
+        mOfferClickUrl = (EditText) findViewById(R.id.offer_click_url);
 
         mGetMobileApps.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,12 +78,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void onEventMainThread(JobEvent.OnOfferWallGot event){
         if(event.offers != null && event.offers.size() > 0) {
+            mOfferWallUrl.setText(event.url);
+
             OfferAdapter offerAdapter = new OfferAdapter(this.getApplicationContext(), event.offers);
             mRecyclerView.setAdapter(offerAdapter);
             Toast.makeText(MainActivity.this, "Total " + event.offers.size() + " offers", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(MainActivity.this, "No offers got", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void onEventMainThread(JobEvent.OnOfferClicked event){
+        mOfferClickUrl.setText(event.clickUrl);
     }
 
     public JobManager getJobManager() {

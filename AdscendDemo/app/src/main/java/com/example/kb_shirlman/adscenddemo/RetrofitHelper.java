@@ -25,7 +25,7 @@ public class RetrofitHelper {
                 @Override
                 public Response intercept(Chain chain) throws IOException {
                     Request newRequest = chain.request().newBuilder()
-                            .addHeader("User-Agent", "Retrofit")
+                            .addHeader("User-Agent", MainActivity.userAgent)
                             .addHeader("Content-Type", "application/json")
                             .addHeader("Authorization", "Basic MTA0MzYzOjE0NjQxMjE5MTc=")
                             .build();

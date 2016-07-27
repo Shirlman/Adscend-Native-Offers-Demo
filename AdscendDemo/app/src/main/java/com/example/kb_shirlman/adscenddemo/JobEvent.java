@@ -8,9 +8,19 @@ import java.util.List;
 public class JobEvent {
     public static class OnOfferWallGot{
         public List<OfferAPIResult.OffersBean> offers;
+        public String url;
 
-        public OnOfferWallGot(List<OfferAPIResult.OffersBean> offers) {
+        public OnOfferWallGot(List<OfferAPIResult.OffersBean> offers, String url) {
             this.offers = offers;
+            this.url = url;
+        }
+    }
+
+    public static class OnOfferClicked {
+        public String clickUrl;
+
+        public OnOfferClicked(String clickUrl) {
+            this.clickUrl = clickUrl;
         }
     }
 }

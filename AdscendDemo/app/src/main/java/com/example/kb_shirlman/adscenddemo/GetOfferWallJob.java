@@ -23,6 +23,7 @@ import retrofit.Response;
 public class GetOfferWallJob extends Job {
     private final String TAG = GetOfferWallJob.class.getName();
     private boolean mIsGetAllOffers;
+    private String mOfferWallUrl;
 
     protected GetOfferWallJob(boolean isGetAllOffers) {
         super(new Params(1000).requireNetwork());
@@ -39,7 +40,7 @@ public class GetOfferWallJob extends Job {
     public void onRun() throws Throwable {
         List<OfferAPIResult.OffersBean> offers = getNativeOffers();
 
-        EventBus.getDefault().post(new JobEvent.OnOfferWallGot(offers));
+        EventBus.getDefault().post(new JobEvent.OnOfferWallGot(offers, mOfferWallUrl));
     }
 
     @Override
@@ -73,6 +74,8 @@ public class GetOfferWallJob extends Job {
 
         if(response.isSuccess()){
             Log.i(TAG, "get adscend native offers success");
+
+            mOfferWallUrl = response.raw().request().httpUrl().url().toString();
 
             if(response.body() != null && response.body().getOffers().size() > 0) {
                 List<OfferAPIResult.OffersBean> offerList = response.body().getOffers();

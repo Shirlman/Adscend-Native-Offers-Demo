@@ -12,6 +12,25 @@
     tools:context="com.example.kb_shirlman.adscenddemo.MainActivity"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Offer wall URL:"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/offer_wall_url"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Click URL:"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/offer_click_url"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
